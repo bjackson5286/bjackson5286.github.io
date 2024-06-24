@@ -23,14 +23,20 @@ email: brynnejackson99@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   
 # baseurl: "/portfolio" # the subpath of your site, e.g. /blog
+baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://bjackson5286.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 intagram_username: brynne_jackson
 github_username:  bjackson5286
 
-# Build settings
-theme: minima
-plugins:
-  - jekyll-feed
+# process sass
+sass:
+  load_paths: 
+    - _sass
+
+#background image
+background_image: /assets/images/background.jpg
+
+
 
 # Exclude from processing.
 # The following items will not be processed, by default.

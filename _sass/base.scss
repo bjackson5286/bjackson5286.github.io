@@ -1,20 +1,45 @@
-body {
+// background image container
+.background-hero {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 100vh;
-    margin: 0;
-    padding: 0;
-    font-family: Arial, system-ui;
+    height: 120vh;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    z-index: -1; /* Ensures it doesn't displace other elements */
+}
+
+.nav {
+    background-color: #333;
+}
+
+$primary: #E43D12;
+$secondary: #D6536D;
+$success: #FFA2B6;
+$info: #EFB11D;
+$warning: #E43D12;
+$danger: #860c0c;
+$light: #EBE9E1;
+$dark: #ae6721;
+
+#myBtn {
+    display: none; /* Hidden by default */
+    position: fixed; /* Fixed/sticky position */
+    bottom: 20px; /* Place the button at the bottom of the page */
+    right: 30px; /* Place the button 30px from the right */
+    z-index: 99; /* Make sure it does not overlap */
+    border: none; /* Remove borders */
+    outline: none; /* Remove outline */
+    background-color: red; /* Set a background color */
+    color: white; /* Text color */
+    cursor: pointer; /* Add a mouse pointer on hover */
+    padding: 15px; /* Some padding */
+    border-radius: 10px; /* Rounded corners */
+    font-size: 18px; /* Increase font size */
   }
   
-  main > div {
-    height: 10rem;
-    margin: 2rem;
-    border: darkgrey 1px solid;
-    border-radius: 8px;
-    overflow: hidden;
-  }
-  
-  h1 {
-    text-align: center;
-    color: gray;
+  #myBtn:hover {
+    background-color: #555; /* Add a dark-grey background on hover */
   }

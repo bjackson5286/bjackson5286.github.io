@@ -1,0 +1,9 @@
+---
+---
+@import "base";
+// Always import bootstrap last so you can override the default variables
+// @import "bootstrap.min.css";
+
+// Custom bootstrap variables must be set or imported *before* bootstrap.
+@import "bootstrap/bootstrap";
+// available bootstrap variables are here https://github.com/twbs/bootstrap-rubygem/blob/main/assets/stylesheets/bootstrap/_variables.scss
