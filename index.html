@@ -92,8 +92,6 @@
       background-size: 300% 300%;
       animation: gradShift 12s ease infinite alternate;
       position: relative;
-      display: flex;
-      flex-direction: column;
       overflow: hidden;
     }
 
@@ -102,29 +100,13 @@
       100% { background-position: 100% 50%; }
     }
 
-    /* Subtle sparkle overlay */
-    .hero::after {
-      content: '✦';
-      position: absolute;
-      right: clamp(32px, 8vw, 120px);
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: clamp(80px, 14vw, 200px);
-      color: var(--rose);
-      opacity: 0.06;
-      pointer-events: none;
-      user-select: none;
-    }
-
-    /* Name block */
+    /* ── Giant name — top-left, text bleeds behind photo ── */
     .hero-name {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
+      position: absolute;
+      top: 0; left: 0; right: 0;
       padding: clamp(16px, 3vh, 28px) var(--gutter) 0;
-      position: relative;
-      z-index: 2;
+      z-index: 1;
+      pointer-events: none;
     }
 
     .hero-name-line {
@@ -155,15 +137,13 @@
       50%       { opacity: 0; }
     }
 
-    /* Bottom info block */
-    .hero-bottom {
-      padding: clamp(20px, 4vh, 48px) var(--gutter) clamp(40px, 7vh, 80px);
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 10px;
-      position: relative;
-      z-index: 2;
+    /* ── Tagline — visible above the fold, left side ── */
+    .hero-tagline {
+      position: absolute;
+      top: calc(clamp(16px, 3vh, 28px) + clamp(120px, 20vh, 260px));
+      left: var(--gutter);
+      z-index: 3;
+      max-width: clamp(320px, 50vw, 540px);
     }
 
     .hero-job {
@@ -172,6 +152,7 @@
       letter-spacing: 2.5px;
       text-transform: uppercase;
       color: var(--muted);
+      margin-bottom: 8px;
     }
 
     .hero-tag {
@@ -179,11 +160,17 @@
       font-style: italic;
       color: var(--text);
       line-height: 1.65;
-      max-width: 440px;
+    }
+
+    /* ── Download button — appears as you scroll (~75% down hero) ── */
+    .hero-download {
+      position: absolute;
+      bottom: 25vh;
+      left: var(--gutter);
+      z-index: 3;
     }
 
     .hero-btn {
-      margin-top: 8px;
       display: inline-block;
       padding: 11px 28px;
       border: 1.5px solid var(--muted);
@@ -193,6 +180,8 @@
       letter-spacing: 2px;
       text-transform: uppercase;
       text-decoration: none;
+      background: rgba(253,246,243,0.35);
+      backdrop-filter: blur(4px);
       transition: background 0.25s, color 0.25s, border-color 0.25s;
     }
 
@@ -200,6 +189,24 @@
       background: var(--rose);
       color: var(--white);
       border-color: var(--rose);
+    }
+
+    /* ── Photo sticker — bottom-right corner ── */
+    .hero-photo {
+      position: absolute;
+      bottom: 0;
+      right: 30px;
+      width: clamp(420px, 84vw, 960px);
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .hero-photo img {
+      width: 100%;
+      height: auto;
+      display: block;
+      filter: drop-shadow(-6px 0 20px rgba(92,58,48,0.12))
+              drop-shadow(4px 16px 32px rgba(92,58,48,0.25));
     }
 
     /* ══════════════════════════════════════
@@ -423,7 +430,7 @@
     .edu-photo-bg {
       position: absolute;
       inset: 0;
-      background: url('assets/bevo-tower.jpg') center center / cover no-repeat;
+      background: url('assets/photo-ut.jpg') center center / cover no-repeat;
       filter: sepia(0.9) hue-rotate(295deg) saturate(0.45) brightness(1.3);
       opacity: 0.18;
       z-index: 0;
@@ -650,15 +657,26 @@
   ══════════════════════════════════════ -->
   <div class="hero">
 
+    <!-- Giant name — bleeds behind photo -->
     <div class="hero-name">
       <span class="hero-name-line" id="line-brynne"></span>
       <span class="hero-name-line" id="line-jackson"><span class="cursor" id="cursor"></span></span>
     </div>
 
-    <div class="hero-bottom">
+    <!-- Tagline — visible above the fold -->
+    <div class="hero-tagline">
       <div class="hero-job">Solution Engineer &nbsp;·&nbsp; Alfa Financial Systems &nbsp;·&nbsp; Denver, CO</div>
-      <div class="hero-tag">Turning legacy systems into scalable futures —<br>and making it look effortless.</div>
+      <div class="hero-tag">Turning legacy systems into scalable futures — and making it look effortless.</div>
+    </div>
+
+    <!-- Download button — appears on scroll (~75% down hero) -->
+    <div class="hero-download">
       <a class="hero-btn" href="resume.pdf" download>↓ &nbsp;Download Resume</a>
+    </div>
+
+    <!-- Photo sticker — bottom-right corner -->
+    <div class="hero-photo">
+      <img src="assets/photo-ut-cutout.png" alt="Brynne Jackson">
     </div>
 
   </div>
