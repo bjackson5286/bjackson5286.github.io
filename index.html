@@ -1,1141 +1,1345 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Brynne Jackson — Solution Engineer</title>
-  <style>
-    /* ══════════════════════════════════════
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Brynne Jackson — Solution Engineer</title>
+    <style>
+      /* ══════════════════════════════════════
        VARIABLES & RESET
     ══════════════════════════════════════ */
-    :root {
-      --rose:   #C9846A;
-      --blush:  #F7C5C0;
-      --mauve:  #D4B8C4;
-      --cream:  #fdf6f3;
-      --text:   #5C3A30;
-      --muted:  #8B5E52;
-      --light:  #B08070;
-      --white:  #ffffff;
-      --gutter: clamp(24px, 6vw, 96px);
-      --max:    1100px;
-    }
+      :root {
+        --rose: #c9846a;
+        --blush: #f7c5c0;
+        --mauve: #d4b8c4;
+        --cream: #fdf6f3;
+        --text: #5c3a30;
+        --muted: #8b5e52;
+        --light: #b08070;
+        --white: #ffffff;
+        --gutter: clamp(24px, 6vw, 96px);
+        --max: 1100px;
+      }
 
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-    html { scroll-behavior: smooth; }
+      html {
+        scroll-behavior: smooth;
+      }
 
-    body {
-      font-family: 'Georgia', serif;
-      background: var(--cream);
-      color: var(--text);
-      font-size: clamp(13px, 1.5vw, 15px);
-      overflow-x: hidden;
-    }
+      body {
+        font-family: "Georgia", serif;
+        background: var(--cream);
+        color: var(--text);
+        font-size: clamp(13px, 1.5vw, 15px);
+        overflow-x: hidden;
+      }
 
-    /* ══════════════════════════════════════
+      /* ══════════════════════════════════════
        STICKY NAV
     ══════════════════════════════════════ */
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      height: 54px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 var(--gutter);
-      background: rgba(253, 246, 243, 0.72);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(201, 132, 106, 0.18);
-      transition: background 0.3s;
-    }
+      nav {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        height: 54px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 var(--gutter);
+        background: rgba(253, 246, 243, 0.72);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        border-bottom: 1px solid rgba(201, 132, 106, 0.18);
+        transition: background 0.3s;
+      }
 
-    .nav-brand {
-      font-family: sans-serif;
-      font-size: 11px;
-      letter-spacing: 2.5px;
-      text-transform: uppercase;
-      color: var(--text);
-      text-decoration: none;
-      white-space: nowrap;
-    }
+      .nav-brand {
+        font-family: sans-serif;
+        font-size: 11px;
+        letter-spacing: 2.5px;
+        text-transform: uppercase;
+        color: var(--text);
+        text-decoration: none;
+        white-space: nowrap;
+      }
 
-    .nav-brand:hover { color: var(--rose); }
+      .nav-brand:hover {
+        color: var(--rose);
+      }
 
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: clamp(12px, 2.5vw, 32px);
-      flex-wrap: wrap;
-      justify-content: flex-end;
-    }
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: clamp(12px, 2.5vw, 32px);
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
 
-    .nav-links a {
-      font-family: sans-serif;
-      font-size: 10px;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      color: var(--muted);
-      text-decoration: none;
-      transition: color 0.2s;
-      white-space: nowrap;
-    }
+      .nav-links a {
+        font-family: sans-serif;
+        font-size: 10px;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: var(--muted);
+        text-decoration: none;
+        transition: color 0.2s;
+        white-space: nowrap;
+      }
 
-    .nav-links a:hover { color: var(--rose); }
+      .nav-links a:hover {
+        color: var(--rose);
+      }
 
-    /* ══════════════════════════════════════
+      /* ══════════════════════════════════════
        HERO
     ══════════════════════════════════════ */
-    .hero {
-      min-height: 125vh;
-      background: linear-gradient(135deg, var(--blush) 0%, #E8A598 30%, var(--mauve) 65%, #C9B8A8 100%);
-      background-size: 300% 300%;
-      animation: gradShift 12s ease infinite alternate;
-      position: relative;
-      overflow: hidden;
-    }
+      .hero {
+        min-height: 125vh;
+        background: linear-gradient(
+          135deg,
+          var(--blush) 0%,
+          #e8a598 30%,
+          var(--mauve) 65%,
+          #c9b8a8 100%
+        );
+        background-size: 300% 300%;
+        animation: gradShift 12s ease infinite alternate;
+        position: relative;
+        overflow: hidden;
+      }
 
-    @keyframes gradShift {
-      0%   { background-position: 0% 50%; }
-      100% { background-position: 100% 50%; }
-    }
+      @keyframes gradShift {
+        0% {
+          background-position: 0% 50%;
+        }
+        100% {
+          background-position: 100% 50%;
+        }
+      }
 
-    /* ── Giant name — top-left, text bleeds behind photo ── */
-    .hero-name {
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      padding: clamp(16px, 3vh, 28px) var(--gutter) 0;
-      z-index: 1;
-      pointer-events: none;
-    }
+      /* ── Giant name — top-left, text bleeds behind photo ── */
+      .hero-name {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        padding: clamp(16px, 3vh, 28px) var(--gutter) 0;
+        z-index: 1;
+        pointer-events: none;
 
-    .hero-name-line {
-      display: block;
-      font-size: clamp(64px, 13.5vw, 158px);
-      font-weight: 900;
-      color: var(--rose);
-      line-height: 0.88;
-      letter-spacing: -3px;
-      text-transform: uppercase;
-      opacity: 0.9;
-      min-height: 0.88em; /* prevent layout shift during typewriter */
-    }
+        /* ADD THIS */
+        min-height: calc(clamp(64px, 13.5vw, 158px) * 2.2);
+      }
 
-    .cursor {
-      display: inline-block;
-      width: 0.055em;
-      height: 0.82em;
-      background: var(--rose);
-      margin-left: 4px;
-      vertical-align: middle;
-      border-radius: 1px;
-      animation: blink 1s step-end infinite;
-    }
+      .hero-name-line {
+        display: block;
+        font-size: clamp(64px, 13.5vw, 158px);
+        font-weight: 900;
+        color: var(--rose);
+        line-height: 0.88;
+        letter-spacing: -3px;
+        text-transform: uppercase;
+        opacity: 0.9;
+        min-height: 0.88em; /* prevent layout shift during typewriter */
+      }
 
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50%       { opacity: 0; }
-    }
+      .cursor {
+        display: inline-block;
+        width: 0.055em;
+        height: 0.82em;
+        background: var(--rose);
+        margin-left: 4px;
+        vertical-align: middle;
+        border-radius: 1px;
+        animation: blink 1s step-end infinite;
+      }
 
-    /* ── Tagline — visible above the fold, left side ── */
-    .hero-tagline {
-      position: absolute;
-      top: calc(clamp(16px, 3vh, 28px) + clamp(120px, 20vh, 260px));
-      left: var(--gutter);
-      z-index: 3;
-      max-width: clamp(320px, 50vw, 540px);
-    }
+      @keyframes blink {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0;
+        }
+      }
 
-    .hero-job {
-      font-family: sans-serif;
-      font-size: 10px;
-      letter-spacing: 2.5px;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 8px;
-    }
+      /* ── Tagline — visible above the fold, left side ── */
+      .hero-tagline {
+        position: absolute;
 
-    .hero-tag {
-      font-size: clamp(13px, 1.7vw, 16px);
-      font-style: italic;
-      color: var(--text);
-      line-height: 1.65;
-    }
+        top: clamp(16px, 3vh, 28px);
+        left: var(--gutter);
 
-    /* ── Download button — appears as you scroll (~75% down hero) ── */
-    .hero-download {
-      position: absolute;
-      bottom: 25vh;
-      left: var(--gutter);
-      z-index: 3;
-    }
+        /* push it BELOW the name block deterministically */
+        margin-top: calc(clamp(64px, 13.5vw, 158px) * 1.8);
 
-    .hero-btn {
-      display: inline-block;
-      padding: 11px 28px;
-      border: 1.5px solid var(--muted);
-      color: var(--muted);
-      font-family: sans-serif;
-      font-size: 10px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      text-decoration: none;
-      background: rgba(253,246,243,0.35);
-      backdrop-filter: blur(4px);
-      transition: background 0.25s, color 0.25s, border-color 0.25s;
-    }
+        z-index: 3;
+        max-width: clamp(320px, 50vw, 540px);
+      }
 
-    .hero-btn:hover {
-      background: var(--rose);
-      color: var(--white);
-      border-color: var(--rose);
-    }
+      .hero-job {
+        font-family: sans-serif;
+        font-size: 10px;
+        letter-spacing: 2.5px;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: 8px;
+      }
 
-    /* ── Photo sticker — bottom-right corner ── */
-    .hero-photo {
-      position: absolute;
-      bottom: 0;
-      right: 30px;
-      width: clamp(420px, 84vw, 960px);
-      z-index: 2;
-      pointer-events: none;
-    }
+      .hero-tag {
+        font-size: clamp(13px, 1.7vw, 16px);
+        font-style: italic;
+        color: var(--text);
+        line-height: 1.65;
+      }
 
-    .hero-photo img {
-      width: 100%;
-      height: auto;
-      display: block;
-      filter: drop-shadow(-6px 0 20px rgba(92,58,48,0.12))
-              drop-shadow(4px 16px 32px rgba(92,58,48,0.25));
-    }
+      /* ── Download button — appears as you scroll (~75% down hero) ── */
+      .hero-download {
+        position: absolute;
 
-    /* ══════════════════════════════════════
+        left: var(--gutter);
+
+        bottom: 25vh;
+
+        z-index: 3;
+      }
+
+      .hero-btn {
+        display: inline-block;
+        padding: 11px 28px;
+        border: 1.5px solid var(--muted);
+        color: var(--muted);
+        font-family: sans-serif;
+        font-size: 10px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        text-decoration: none;
+        background: rgba(253, 246, 243, 0.35);
+        backdrop-filter: blur(4px);
+        transition: background 0.25s, color 0.25s, border-color 0.25s;
+      }
+
+      .hero-btn:hover {
+        background: var(--rose);
+        color: var(--white);
+        border-color: var(--rose);
+      }
+      /* Photo wrapper */
+      .hero-photo {
+        position: absolute;
+        right: 20vh;
+        bottom: 0;
+        height: 120vh; /* slightly smaller than screen height */
+        max-height: 100%;
+        width: clamp(220px, 32vw, 520px);
+
+        z-index: 2;
+        pointer-events: none;
+      }
+
+      /* Image */
+      .hero-photo img {
+        height: 100%;
+        width: auto;
+        display: block;
+        object-fit: contain;
+
+        filter: drop-shadow(-6px 0 20px rgba(92, 58, 48, 0.12))
+          drop-shadow(4px 16px 32px rgba(92, 58, 48, 0.25));
+      }
+
+      /* ══════════════════════════════════════
        SHARED SECTION STYLES
     ══════════════════════════════════════ */
-    .sec {
-      padding: clamp(56px, 9vh, 100px) 0;
-    }
+      .sec {
+        padding: clamp(56px, 9vh, 100px) 0;
+      }
 
-    .sec:nth-of-type(odd)  { background: var(--cream); }
-    .sec:nth-of-type(even) { background: var(--white); }
+      .sec:nth-of-type(odd) {
+        background: var(--cream);
+      }
+      .sec:nth-of-type(even) {
+        background: var(--white);
+      }
 
-    .container {
-      max-width: var(--max);
-      margin: 0 auto;
-      padding: 0 var(--gutter);
-    }
+      .container {
+        max-width: var(--max);
+        margin: 0 auto;
+        padding: 0 var(--gutter);
+      }
 
-    /* Section header — identical across all sections */
-    .sec-header {
-      margin-bottom: clamp(28px, 5vh, 52px);
-    }
+      /* Section header — identical across all sections */
+      .sec-header {
+        margin-bottom: clamp(28px, 5vh, 52px);
+      }
 
-    .sec-deco {
-      font-family: sans-serif;
-      font-size: 10px;
-      letter-spacing: 3px;
-      color: var(--rose);
-      margin-bottom: 8px;
-      text-transform: uppercase;
-    }
+      .sec-deco {
+        font-family: sans-serif;
+        font-size: 10px;
+        letter-spacing: 3px;
+        color: var(--rose);
+        margin-bottom: 8px;
+        text-transform: uppercase;
+      }
 
-    .sec-title {
-      font-size: clamp(30px, 5vw, 52px);
-      font-weight: 900;
-      color: var(--text);
-      line-height: 1;
-      letter-spacing: -1px;
-      text-transform: uppercase;
-    }
+      .sec-title {
+        font-size: clamp(30px, 5vw, 52px);
+        font-weight: 900;
+        color: var(--text);
+        line-height: 1;
+        letter-spacing: -1px;
+        text-transform: uppercase;
+      }
 
-    .sec-rule {
-      width: 48px;
-      height: 2px;
-      background: linear-gradient(90deg, var(--rose), var(--blush));
-      margin-top: 12px;
-      border-radius: 2px;
-    }
+      .sec-rule {
+        width: 48px;
+        height: 2px;
+        background: linear-gradient(90deg, var(--rose), var(--blush));
+        margin-top: 12px;
+        border-radius: 2px;
+      }
 
-    /* ══════════════════════════════════════
+      /* ══════════════════════════════════════
        FADE-UP ANIMATION (JS-driven)
     ══════════════════════════════════════ */
-    .fade-up {
-      opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.65s ease, transform 0.65s ease;
-    }
+      .fade-up {
+        opacity: 0;
+        transform: translateY(28px);
+        transition: opacity 0.65s ease, transform 0.65s ease;
+      }
 
-    .fade-up.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+      .fade-up.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
 
-    /* Stagger children of a fade-up container */
-    .fade-up:nth-child(2) { transition-delay: 0.1s; }
-    .fade-up:nth-child(3) { transition-delay: 0.2s; }
-    .fade-up:nth-child(4) { transition-delay: 0.3s; }
-    .fade-up:nth-child(5) { transition-delay: 0.4s; }
+      /* Stagger children of a fade-up container */
+      .fade-up:nth-child(2) {
+        transition-delay: 0.1s;
+      }
+      .fade-up:nth-child(3) {
+        transition-delay: 0.2s;
+      }
+      .fade-up:nth-child(4) {
+        transition-delay: 0.3s;
+      }
+      .fade-up:nth-child(5) {
+        transition-delay: 0.4s;
+      }
 
-    /* ══════════════════════════════════════
+      /* ══════════════════════════════════════
        ABOUT
     ══════════════════════════════════════ */
-    .about-grid {
-      display: grid;
-      grid-template-columns: 3fr 2fr;
-      gap: clamp(24px, 5vw, 64px);
-      align-items: start;
-    }
+      .about-grid {
+        display: grid;
+        grid-template-columns: 3fr 2fr;
+        gap: clamp(24px, 5vw, 64px);
+        align-items: start;
+      }
 
-    @media (max-width: 640px) {
-      .about-grid { grid-template-columns: 1fr; }
-    }
+      @media (max-width: 640px) {
+        .about-grid {
+          grid-template-columns: 1fr;
+        }
+      }
 
-    .about-bio p {
-      line-height: 1.85;
-      color: var(--text);
-    }
+      .about-bio p {
+        line-height: 1.85;
+        color: var(--text);
+      }
 
-    .about-bio p + p { margin-top: 16px; }
+      .about-bio p + p {
+        margin-top: 16px;
+      }
 
-    .about-stats {
-      display: flex;
-      flex-direction: column;
-      gap: clamp(14px, 2.5vh, 22px);
-    }
+      .about-stats {
+        display: flex;
+        flex-direction: column;
+        gap: clamp(14px, 2.5vh, 22px);
+      }
 
-    .about-stat {
-      border-left: 3px solid var(--rose);
-      padding-left: 16px;
-    }
+      .about-stat {
+        border-left: 3px solid var(--rose);
+        padding-left: 16px;
+      }
 
-    .about-stat-val {
-      font-size: clamp(22px, 3.5vw, 32px);
-      font-weight: 700;
-      color: var(--rose);
-      line-height: 1;
-    }
+      .about-stat-val {
+        font-size: clamp(22px, 3.5vw, 32px);
+        font-weight: 700;
+        color: var(--rose);
+        line-height: 1;
+      }
 
-    .about-stat-label {
-      font-family: sans-serif;
-      font-size: 10px;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-top: 4px;
-    }
+      .about-stat-label {
+        font-family: sans-serif;
+        font-size: 10px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-top: 4px;
+      }
 
-    /* ══════════════════════════════════════
+      /* ══════════════════════════════════════
        EXPERIENCE TIMELINE
     ══════════════════════════════════════ */
-    .tl {
-      position: relative;
-      padding-left: 28px;
-    }
+      .tl {
+        position: relative;
+        padding-left: 28px;
+      }
 
-    .tl::before {
-      content: '';
-      position: absolute;
-      left: 6px;
-      top: 8px;
-      bottom: 28px;
-      width: 1.5px;
-      background: linear-gradient(to bottom, var(--rose) 0%, var(--blush) 70%, transparent 100%);
-    }
+      .tl::before {
+        content: "";
+        position: absolute;
+        left: 6px;
+        top: 8px;
+        bottom: 28px;
+        width: 1.5px;
+        background: linear-gradient(
+          to bottom,
+          var(--rose) 0%,
+          var(--blush) 70%,
+          transparent 100%
+        );
+      }
 
-    .tl-item {
-      position: relative;
-      margin-bottom: 40px;
-    }
+      .tl-item {
+        position: relative;
+        margin-bottom: 40px;
+      }
 
-    .tl-item:last-child { margin-bottom: 0; }
+      .tl-item:last-child {
+        margin-bottom: 0;
+      }
 
-    .tl-item::before {
-      content: '';
-      position: absolute;
-      left: -23px;
-      top: 6px;
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: var(--rose);
-      box-shadow: 0 0 0 3px var(--cream), 0 0 0 5px rgba(201, 132, 106, 0.35);
-    }
+      .tl-item::before {
+        content: "";
+        position: absolute;
+        left: -23px;
+        top: 6px;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: var(--rose);
+        box-shadow: 0 0 0 3px var(--cream), 0 0 0 5px rgba(201, 132, 106, 0.35);
+      }
 
-    /* fix dot color for items inside white section */
-    .sec:nth-of-type(even) .tl-item::before {
-      box-shadow: 0 0 0 3px var(--white), 0 0 0 5px rgba(201, 132, 106, 0.35);
-    }
+      /* fix dot color for items inside white section */
+      .sec:nth-of-type(even) .tl-item::before {
+        box-shadow: 0 0 0 3px var(--white), 0 0 0 5px rgba(201, 132, 106, 0.35);
+      }
 
-    .tl-company {
-      font-family: sans-serif;
-      font-size: 10px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--rose);
-      margin-bottom: 4px;
-    }
+      .tl-company {
+        font-family: sans-serif;
+        font-size: 10px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--rose);
+        margin-bottom: 4px;
+      }
 
-    .tl-role {
-      font-size: clamp(14px, 1.8vw, 17px);
-      font-weight: 700;
-      color: var(--text);
-    }
+      .tl-role {
+        font-size: clamp(14px, 1.8vw, 17px);
+        font-weight: 700;
+        color: var(--text);
+      }
 
-    .tl-date {
-      font-family: sans-serif;
-      font-size: 10px;
-      color: var(--light);
-      margin-top: 3px;
-      margin-bottom: 12px;
-    }
+      .tl-date {
+        font-family: sans-serif;
+        font-size: 10px;
+        color: var(--light);
+        margin-top: 3px;
+        margin-bottom: 12px;
+      }
 
-    .tl-bullets {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
+      .tl-bullets {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
 
-    .tl-bullets li {
-      line-height: 1.7;
-      color: var(--text);
-      padding-left: 18px;
-      position: relative;
-      font-size: clamp(12px, 1.4vw, 14px);
-    }
+      .tl-bullets li {
+        line-height: 1.7;
+        color: var(--text);
+        padding-left: 18px;
+        position: relative;
+        font-size: clamp(12px, 1.4vw, 14px);
+      }
 
-    .tl-bullets li::before {
-      content: '✦';
-      position: absolute;
-      left: 0;
-      top: 5px;
-      color: var(--rose);
-      font-size: 7px;
-    }
+      .tl-bullets li::before {
+        content: "✦";
+        position: absolute;
+        left: 0;
+        top: 5px;
+        color: var(--rose);
+        font-size: 7px;
+      }
 
-    .tl-divider {
-      border: none;
-      border-top: 1px dashed rgba(201, 132, 106, 0.3);
-      margin: 36px 0;
-    }
+      .tl-divider {
+        border: none;
+        border-top: 1px dashed rgba(201, 132, 106, 0.3);
+        margin: 36px 0;
+      }
 
-    /* ══════════════════════════════════════
+      /* ══════════════════════════════════════
        EDUCATION
     ══════════════════════════════════════ */
-    .edu-sec {
-      position: relative;
-      overflow: hidden;
-    }
+      .edu-sec {
+        position: relative;
+        overflow: hidden;
+      }
 
-    .edu-sec .container {
-      position: relative;
-      z-index: 1;
-    }
+      .edu-sec .container {
+        position: relative;
+        z-index: 1;
+      }
 
-    .edu-stats {
-      display: flex;
-      gap: clamp(24px, 5vw, 56px);
-      margin-bottom: clamp(18px, 3vh, 28px);
-      flex-wrap: wrap;
-      align-items: flex-end;
-    }
+      .edu-stats {
+        display: flex;
+        gap: clamp(24px, 5vw, 56px);
+        margin-bottom: clamp(18px, 3vh, 28px);
+        flex-wrap: wrap;
+        align-items: flex-end;
+      }
 
-    .edu-stat-val {
-      font-size: clamp(28px, 5vw, 44px);
-      font-weight: 900;
-      color: var(--rose);
-      line-height: 1;
-    }
+      .edu-stat-val {
+        font-size: clamp(28px, 5vw, 44px);
+        font-weight: 900;
+        color: var(--rose);
+        line-height: 1;
+      }
 
-    .edu-stat-label {
-      font-family: sans-serif;
-      font-size: 9px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-top: 4px;
-    }
+      .edu-stat-label {
+        font-family: sans-serif;
+        font-size: 9px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-top: 4px;
+      }
 
-    .edu-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin: 14px 0 22px;
-    }
+      .edu-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 14px 0 22px;
+      }
 
-    .edu-badge {
-      font-family: sans-serif;
-      font-size: 11px;
-      padding: 5px 15px;
-      border-radius: 20px;
-      border: 1px solid var(--blush);
-      color: var(--text);
-      background: rgba(255, 255, 255, 0.7);
-    }
+      .edu-badge {
+        font-family: sans-serif;
+        font-size: 11px;
+        padding: 5px 15px;
+        border-radius: 20px;
+        border: 1px solid var(--blush);
+        color: var(--text);
+        background: rgba(255, 255, 255, 0.7);
+      }
 
-    .edu-badge.filled {
-      background: var(--rose);
-      color: var(--white);
-      border-color: var(--rose);
-    }
+      .edu-badge.filled {
+        background: var(--rose);
+        color: var(--white);
+        border-color: var(--rose);
+      }
 
-    .honors-label {
-      font-family: sans-serif;
-      font-size: 9px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 12px;
-    }
+      .honors-label {
+        font-family: sans-serif;
+        font-size: 9px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: 12px;
+      }
 
-    .honors-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
+      .honors-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
 
-    .honors-list li {
-      font-size: clamp(12px, 1.4vw, 14px);
-      color: var(--text);
-      line-height: 1.65;
-      padding-left: 18px;
-      position: relative;
-    }
+      .honors-list li {
+        font-size: clamp(12px, 1.4vw, 14px);
+        color: var(--text);
+        line-height: 1.65;
+        padding-left: 18px;
+        position: relative;
+      }
 
-    .honors-list li::before {
-      content: '✦';
-      position: absolute;
-      left: 0;
-      top: 5px;
-      color: var(--rose);
-      font-size: 7px;
-    }
+      .honors-list li::before {
+        content: "✦";
+        position: absolute;
+        left: 0;
+        top: 5px;
+        color: var(--rose);
+        font-size: 7px;
+      }
 
-    /* ══════════════════════════════════════
+      /* ══════════════════════════════════════
        AWARDS & CERTS
     ══════════════════════════════════════ */
-    .awards-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: clamp(16px, 2.5vw, 24px);
-    }
+      .awards-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: clamp(16px, 2.5vw, 24px);
+      }
 
-    .award-card {
-      background: var(--white);
-      border-radius: 12px;
-      padding: clamp(18px, 2.5vw, 28px);
-      box-shadow: 0 2px 20px rgba(201, 132, 106, 0.1);
-      border-top: 3px solid var(--rose);
-      display: flex;
-      flex-direction: column;
-      gap: 7px;
-      cursor: pointer;
-      transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
-    }
+      .award-card {
+        background: var(--white);
+        border-radius: 12px;
+        padding: clamp(18px, 2.5vw, 28px);
+        box-shadow: 0 2px 20px rgba(201, 132, 106, 0.1);
+        border-top: 3px solid var(--rose);
+        display: flex;
+        flex-direction: column;
+        gap: 7px;
+        cursor: pointer;
+        transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+      }
 
-    .award-card:hover {
-      background: #f0ddd5;
-      box-shadow: 0 6px 32px rgba(201, 132, 106, 0.32);
-      transform: translateY(-2px);
-    }
+      .award-card:hover {
+        background: #f0ddd5;
+        box-shadow: 0 6px 32px rgba(201, 132, 106, 0.32);
+        transform: translateY(-2px);
+      }
 
-    .award-icon { font-size: 24px; }
+      .award-icon {
+        font-size: 24px;
+      }
 
-    .award-title {
-      font-size: clamp(13px, 1.6vw, 16px);
-      font-weight: 700;
-      color: var(--text);
-      line-height: 1.35;
-    }
+      .award-title {
+        font-size: clamp(13px, 1.6vw, 16px);
+        font-weight: 700;
+        color: var(--text);
+        line-height: 1.35;
+      }
 
-    .award-org {
-      font-family: sans-serif;
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      color: var(--rose);
-    }
+      .award-org {
+        font-family: sans-serif;
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        color: var(--rose);
+      }
 
-    .award-date {
-      font-family: sans-serif;
-      font-size: 10px;
-      color: var(--light);
-    }
+      .award-date {
+        font-family: sans-serif;
+        font-size: 10px;
+        color: var(--light);
+      }
 
-    /* ══════════════════════════════════════
+      /* ══════════════════════════════════════
        TECHNICAL SKILLS
     ══════════════════════════════════════ */
-    .skills-groups {
-      display: flex;
-      flex-direction: column;
-      gap: clamp(18px, 3vh, 30px);
-    }
+      .skills-groups {
+        display: flex;
+        flex-direction: column;
+        gap: clamp(18px, 3vh, 30px);
+      }
 
-    .skill-cat {
-      font-family: sans-serif;
-      font-size: 9px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--light);
-      margin-bottom: 10px;
-    }
+      .skill-cat {
+        font-family: sans-serif;
+        font-size: 9px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--light);
+        margin-bottom: 10px;
+      }
 
-    .pills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
+      .pills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
 
-    .pill {
-      font-family: sans-serif;
-      font-size: 11px;
-      padding: 6px 14px;
-      border-radius: 20px;
-      border: 1px solid var(--blush);
-      color: var(--text);
-      background: var(--white);
-      transition: background 0.2s, color 0.2s;
-    }
+      .pill {
+        font-family: sans-serif;
+        font-size: 11px;
+        padding: 6px 14px;
+        border-radius: 20px;
+        border: 1px solid var(--blush);
+        color: var(--text);
+        background: var(--white);
+        transition: background 0.2s, color 0.2s;
+      }
 
-    .pill.core {
-      background: var(--rose);
-      color: var(--white);
-      border-color: var(--rose);
-    }
+      .pill.core {
+        background: var(--rose);
+        color: var(--white);
+        border-color: var(--rose);
+      }
 
-    /* ══════════════════════════════════════
+      /* ══════════════════════════════════════
        AWARD MODAL
     ══════════════════════════════════════ */
-    .modal-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(92, 58, 48, 0.45);
-      backdrop-filter: blur(3px);
-      -webkit-backdrop-filter: blur(3px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 2000;
-    }
+      .modal-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(92, 58, 48, 0.45);
+        backdrop-filter: blur(3px);
+        -webkit-backdrop-filter: blur(3px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 2000;
+      }
 
-    .modal-overlay[hidden] { display: none; }
+      .modal-overlay[hidden] {
+        display: none;
+      }
 
-    .modal-box {
-      background: var(--white);
-      border-radius: 16px;
-      box-shadow: 0 12px 56px rgba(92, 58, 48, 0.28);
-      padding: 32px 34px 28px;
-      max-width: 440px;
-      width: 90%;
-      border-top: 3px solid var(--rose);
-      position: relative;
-      animation: modalFadeUp 0.22s ease;
-    }
+      .modal-box {
+        background: var(--white);
+        border-radius: 16px;
+        box-shadow: 0 12px 56px rgba(92, 58, 48, 0.28);
+        padding: 32px 34px 28px;
+        max-width: 440px;
+        width: 90%;
+        border-top: 3px solid var(--rose);
+        position: relative;
+        animation: modalFadeUp 0.22s ease;
+      }
 
-    @keyframes modalFadeUp {
-      from { opacity: 0; transform: translateY(14px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
+      @keyframes modalFadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(14px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
 
-    .modal-close {
-      position: absolute;
-      top: 14px;
-      right: 16px;
-      font-family: sans-serif;
-      font-size: 10px;
-      color: var(--muted);
-      cursor: pointer;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      border: 1px solid var(--blush);
-      padding: 4px 11px;
-      border-radius: 20px;
-      background: transparent;
-      transition: background 0.2s, color 0.2s, border-color 0.2s;
-    }
+      .modal-close {
+        position: absolute;
+        top: 14px;
+        right: 16px;
+        font-family: sans-serif;
+        font-size: 10px;
+        color: var(--muted);
+        cursor: pointer;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        border: 1px solid var(--blush);
+        padding: 4px 11px;
+        border-radius: 20px;
+        background: transparent;
+        transition: background 0.2s, color 0.2s, border-color 0.2s;
+      }
 
-    .modal-close:hover {
-      background: var(--rose);
-      color: var(--white);
-      border-color: var(--rose);
-    }
+      .modal-close:hover {
+        background: var(--rose);
+        color: var(--white);
+        border-color: var(--rose);
+      }
 
-    .modal-icon { font-size: 26px; margin-bottom: 8px; }
+      .modal-icon {
+        font-size: 26px;
+        margin-bottom: 8px;
+      }
 
-    .modal-title {
-      font-size: clamp(14px, 1.8vw, 17px);
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 3px;
-      line-height: 1.3;
-    }
+      .modal-title {
+        font-size: clamp(14px, 1.8vw, 17px);
+        font-weight: 700;
+        color: var(--text);
+        margin-bottom: 3px;
+        line-height: 1.3;
+      }
 
-    .modal-org {
-      font-family: sans-serif;
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      color: var(--rose);
-      margin-bottom: 14px;
-    }
+      .modal-org {
+        font-family: sans-serif;
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        color: var(--rose);
+        margin-bottom: 14px;
+      }
 
-    .modal-body {
-      font-size: clamp(12px, 1.4vw, 14px);
-      color: var(--muted);
-      line-height: 1.75;
-    }
+      .modal-body {
+        font-size: clamp(12px, 1.4vw, 14px);
+        color: var(--muted);
+        line-height: 1.75;
+      }
 
-    .modal-body p + p { margin-top: 10px; }
+      .modal-body p + p {
+        margin-top: 10px;
+      }
 
-    .modal-link {
-      display: inline-block;
-      margin-top: 14px;
-      font-family: sans-serif;
-      font-size: 10px;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      color: var(--rose);
-      text-decoration: none;
-      border-bottom: 1px solid var(--blush);
-      padding-bottom: 2px;
-      transition: color 0.2s, border-color 0.2s;
-    }
+      .modal-link {
+        display: inline-block;
+        margin-top: 14px;
+        font-family: sans-serif;
+        font-size: 10px;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: var(--rose);
+        text-decoration: none;
+        border-bottom: 1px solid var(--blush);
+        padding-bottom: 2px;
+        transition: color 0.2s, border-color 0.2s;
+      }
 
-    .modal-link:hover { color: var(--text); border-color: var(--text); }
+      .modal-link:hover {
+        color: var(--text);
+        border-color: var(--text);
+      }
 
-    /* ══════════════════════════════════════
+      /* ══════════════════════════════════════
        FOOTER
     ══════════════════════════════════════ */
-    footer {
-      background: var(--text);
-      color: rgba(253, 246, 243, 0.6);
-      font-family: sans-serif;
-      font-size: 10px;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      text-align: center;
-      padding: 28px var(--gutter);
-    }
+      footer {
+        background: var(--text);
+        color: rgba(253, 246, 243, 0.6);
+        font-family: sans-serif;
+        font-size: 10px;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        text-align: center;
+        padding: 28px var(--gutter);
+      }
 
-    footer a {
-      color: var(--blush);
-      text-decoration: none;
-    }
+      footer a {
+        color: var(--blush);
+        text-decoration: none;
+      }
 
-    footer a:hover { color: var(--white); }
+      footer a:hover {
+        color: var(--white);
+      }
 
-    /* ══════════════════════════════════════
+      /* ══════════════════════════════════════
        SCROLLBAR STYLING
     ══════════════════════════════════════ */
-    ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-track { background: var(--cream); }
-    ::-webkit-scrollbar-thumb { background: var(--blush); border-radius: 3px; }
-    ::-webkit-scrollbar-thumb:hover { background: var(--rose); }
-  </style>
-</head>
-<body>
-
-  <!-- ══════════════════════════════════════
+      ::-webkit-scrollbar {
+        width: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: var(--cream);
+      }
+      ::-webkit-scrollbar-thumb {
+        background: var(--blush);
+        border-radius: 3px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: var(--rose);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ══════════════════════════════════════
        STICKY NAV
   ══════════════════════════════════════ -->
-  <nav>
-    <a class="nav-brand" href="#">B. Jackson</a>
-    <div class="nav-links">
-      <a href="#about">About</a>
-      <a href="#experience">Experience</a>
-      <a href="#education">Education</a>
-      <a href="#awards">Awards</a>
-      <a href="#skills">Skills</a>
-      <a href="interests.html">Interests</a>
-    </div>
-  </nav>
+    <nav>
+      <a class="nav-brand" href="#">B. Jackson</a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="#awards">Awards</a>
+        <a href="#skills">Skills</a>
+        <a href="interests.html">Interests</a>
+      </div>
+    </nav>
 
-  <!-- ══════════════════════════════════════
+    <!-- ══════════════════════════════════════
        HERO
   ══════════════════════════════════════ -->
-  <div class="hero">
+    <div class="hero">
+      <!-- Giant name — bleeds behind photo -->
+      <div class="hero-name">
+        <span class="hero-name-line" id="line-brynne"></span>
+        <span class="hero-name-line" id="line-jackson"
+          ><span class="cursor" id="cursor"></span
+        ></span>
+      </div>
 
-    <!-- Giant name — bleeds behind photo -->
-    <div class="hero-name">
-      <span class="hero-name-line" id="line-brynne"></span>
-      <span class="hero-name-line" id="line-jackson"><span class="cursor" id="cursor"></span></span>
+      <!-- Tagline — visible above the fold -->
+      <div class="hero-tagline">
+        <div class="hero-job">
+          Solution Engineer &nbsp;·&nbsp; Alfa Financial Systems &nbsp;·&nbsp;
+          Denver, CO
+        </div>
+        <div class="hero-tag">
+          Turning legacy systems into scalable futures — and making it look
+          effortless.
+        </div>
+      </div>
+
+      <!-- Download button — appears on scroll (~75% down hero) -->
+      <div class="hero-download">
+        <a class="hero-btn" href="resume.pdf" download
+          >↓ &nbsp;Download Resume</a
+        >
+      </div>
+
+      <!-- Photo sticker — bottom-right corner -->
+      <div class="hero-photo">
+        <img src="assets/photo-ut-cutout.png" alt="Brynne Jackson" />
+      </div>
     </div>
 
-    <!-- Tagline — visible above the fold -->
-    <div class="hero-tagline">
-      <div class="hero-job">Solution Engineer &nbsp;·&nbsp; Alfa Financial Systems &nbsp;·&nbsp; Denver, CO</div>
-      <div class="hero-tag">Turning legacy systems into scalable futures — and making it look effortless.</div>
-    </div>
-
-    <!-- Download button — appears on scroll (~75% down hero) -->
-    <div class="hero-download">
-      <a class="hero-btn" href="resume.pdf" download>↓ &nbsp;Download Resume</a>
-    </div>
-
-    <!-- Photo sticker — bottom-right corner -->
-    <div class="hero-photo">
-      <img src="assets/photo-ut-cutout.png" alt="Brynne Jackson">
-    </div>
-
-  </div>
-
-  <!-- ══════════════════════════════════════
+    <!-- ══════════════════════════════════════
        01 — ABOUT
   ══════════════════════════════════════ -->
-  <section class="sec" id="about">
-    <div class="container">
-      <div class="sec-header fade-up">
-        <div class="sec-deco">✦ &nbsp; 01</div>
-        <div class="sec-title">About</div>
-        <div class="sec-rule"></div>
-      </div>
-      <div class="about-grid">
-        <div class="about-bio fade-up">
-          <p>Hey, I'm Brynne — a Solution Engineer based in Denver, CO with a talent for making complex systems make sense. I specialize in bridging the gap between technical architecture and business outcomes, whether that's designing integration strategies for enterprise banks, migrating hundreds of thousands of financial contracts, or building tools that make an entire sales team's life easier.</p>
-          <p>I thrive at the intersection of deep technical work and human communication — translating cloud architecture, data pipelines, and legacy systems into language that actually lands with stakeholders.</p>
+    <section class="sec" id="about">
+      <div class="container">
+        <div class="sec-header fade-up">
+          <div class="sec-deco">✦ &nbsp; 01</div>
+          <div class="sec-title">About</div>
+          <div class="sec-rule"></div>
         </div>
-        <div class="about-stats">
-          <div class="about-stat fade-up">
-            <div class="about-stat-val">2+</div>
-            <div class="about-stat-label">Years at Alfa Financial</div>
+        <div class="about-grid">
+          <div class="about-bio fade-up">
+            <p>
+              Hey, I'm Brynne — a Solution Engineer based in Denver, CO with a
+              talent for making complex systems make sense. I specialize in
+              bridging the gap between technical architecture and business
+              outcomes, whether that's designing integration strategies for
+              enterprise banks, migrating hundreds of thousands of financial
+              contracts, or building tools that make an entire sales team's life
+              easier.
+            </p>
+            <p>
+              I thrive at the intersection of deep technical work and human
+              communication — translating cloud architecture, data pipelines,
+              and legacy systems into language that actually lands with
+              stakeholders.
+            </p>
           </div>
-          <div class="about-stat fade-up">
-            <div class="about-stat-val">400K+</div>
-            <div class="about-stat-label">Contracts Migrated</div>
-          </div>
-          <div class="about-stat fade-up">
-            <div class="about-stat-val">40+</div>
-            <div class="about-stat-label">Technical Design Docs</div>
-          </div>
-          <div class="about-stat fade-up">
-            <div class="about-stat-val">4.0</div>
-            <div class="about-stat-label">GPA &nbsp;·&nbsp; UT Austin</div>
+          <div class="about-stats">
+            <div class="about-stat fade-up">
+              <div class="about-stat-val">2+</div>
+              <div class="about-stat-label">Years at Alfa Financial</div>
+            </div>
+            <div class="about-stat fade-up">
+              <div class="about-stat-val">400K+</div>
+              <div class="about-stat-label">Contracts Migrated</div>
+            </div>
+            <div class="about-stat fade-up">
+              <div class="about-stat-val">40+</div>
+              <div class="about-stat-label">Technical Design Docs</div>
+            </div>
+            <div class="about-stat fade-up">
+              <div class="about-stat-val">4.0</div>
+              <div class="about-stat-label">GPA &nbsp;·&nbsp; UT Austin</div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ══════════════════════════════════════
+    <!-- ══════════════════════════════════════
        02 — EXPERIENCE
   ══════════════════════════════════════ -->
-  <section class="sec" id="experience">
-    <div class="container">
-      <div class="sec-header fade-up">
-        <div class="sec-deco">✦ &nbsp; 02</div>
-        <div class="sec-title">Experience</div>
-        <div class="sec-rule"></div>
-      </div>
-
-      <div class="tl">
-
-        <!-- Role 1 -->
-        <div class="tl-item fade-up">
-          <div class="tl-company">Alfa Financial Systems &nbsp;·&nbsp; Denver, CO</div>
-          <div class="tl-role">Solution Engineer</div>
-          <div class="tl-date">June 2025 – Present</div>
-          <ul class="tl-bullets">
-            <li>Designed the integration strategy for a large bank's Auto division — analyzed current-state systems, defined future-state architecture, reduced integrations from 150+ to under 40, and authored ~40 technical design documents</li>
-            <li>Developed the technical migration strategy to transition 400,000+ financial contracts from legacy mainframe systems to Alfa Financial Systems, improving scalability and data accessibility</li>
-            <li>Enabled product adoption by translating complex technical concepts — integration architectures, data replication, event streaming, AWS landscape, and security/compliance — into actionable insights for stakeholders</li>
-            <li>Served as project release manager: created and managed client cloud environments, delivery pipelines, and deployments; primary point-of-contact for environment provisioning and release coordination</li>
-          </ul>
+    <section class="sec" id="experience">
+      <div class="container">
+        <div class="sec-header fade-up">
+          <div class="sec-deco">✦ &nbsp; 02</div>
+          <div class="sec-title">Experience</div>
+          <div class="sec-rule"></div>
         </div>
 
-        <hr class="tl-divider">
+        <div class="tl">
+          <!-- Role 1 -->
+          <div class="tl-item fade-up">
+            <div class="tl-company">
+              Alfa Financial Systems &nbsp;·&nbsp; Denver, CO
+            </div>
+            <div class="tl-role">Solution Engineer</div>
+            <div class="tl-date">June 2025 – Present</div>
+            <ul class="tl-bullets">
+              <li>
+                Designed the integration strategy for a large bank's Auto
+                division — analyzed current-state systems, defined future-state
+                architecture, reduced integrations from 150+ to under 40, and
+                authored ~40 technical design documents
+              </li>
+              <li>
+                Developed the technical migration strategy to transition
+                400,000+ financial contracts from legacy mainframe systems to
+                Alfa Financial Systems, improving scalability and data
+                accessibility
+              </li>
+              <li>
+                Enabled product adoption by translating complex technical
+                concepts — integration architectures, data replication, event
+                streaming, AWS landscape, and security/compliance — into
+                actionable insights for stakeholders
+              </li>
+              <li>
+                Served as project release manager: created and managed client
+                cloud environments, delivery pipelines, and deployments; primary
+                point-of-contact for environment provisioning and release
+                coordination
+              </li>
+            </ul>
+          </div>
 
-        <!-- Role 2 -->
-        <div class="tl-item fade-up">
-          <div class="tl-role">Junior Solution Engineer</div>
-          <div class="tl-date">June 2023 – June 2025</div>
-          <ul class="tl-bullets">
-            <li>Technical lead on the Sales team — managed the Auto Sales web application, including Java-based POC demos, issue triage, and coordination with Product Engineering; oversaw end-to-end build, deployment, and release via Jenkins, AWS ECR/Cloud, and Kubernetes</li>
-            <li>Identified inefficiencies in legacy demo preparation and implemented a scalable solution by building a reusable Java-based data generation tool integrated with JUnit and CI/CD pipelines in Jenkins</li>
-            <li>Discovered opportunity to expand into Equipment markets, proposed new product offering, secured leadership approval, collaborated with Product Engineering, and developed a modernized equipment application with architectural support and a syndication solution</li>
-          </ul>
+          <hr class="tl-divider" />
+
+          <!-- Role 2 -->
+          <div class="tl-item fade-up">
+            <div class="tl-role">Junior Solution Engineer</div>
+            <div class="tl-date">June 2023 – June 2025</div>
+            <ul class="tl-bullets">
+              <li>
+                Technical lead on the Sales team — managed the Auto Sales web
+                application, including Java-based POC demos, issue triage, and
+                coordination with Product Engineering; oversaw end-to-end build,
+                deployment, and release via Jenkins, AWS ECR/Cloud, and
+                Kubernetes
+              </li>
+              <li>
+                Identified inefficiencies in legacy demo preparation and
+                implemented a scalable solution by building a reusable
+                Java-based data generation tool integrated with JUnit and CI/CD
+                pipelines in Jenkins
+              </li>
+              <li>
+                Discovered opportunity to expand into Equipment markets,
+                proposed new product offering, secured leadership approval,
+                collaborated with Product Engineering, and developed a
+                modernized equipment application with architectural support and
+                a syndication solution
+              </li>
+            </ul>
+          </div>
         </div>
-
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ══════════════════════════════════════
+    <!-- ══════════════════════════════════════
        03 — EDUCATION
   ══════════════════════════════════════ -->
-  <section class="sec edu-sec" id="education">
-    <div class="edu-photo-bg"></div>
-    <div class="container">
-
-      <div class="sec-header fade-up">
-        <div class="sec-deco">✦ &nbsp; 03</div>
-        <div class="sec-title">Education</div>
-        <div class="sec-rule"></div>
-      </div>
-
-      <div class="edu-stats fade-up">
-        <div>
-          <div class="edu-stat-val">4.0</div>
-          <div class="edu-stat-label">GPA</div>
+    <section class="sec edu-sec" id="education">
+      <div class="container">
+        <div class="sec-header fade-up">
+          <div class="sec-deco">✦ &nbsp; 03</div>
+          <div class="sec-title">Education</div>
+          <div class="sec-rule"></div>
         </div>
-        <div>
-          <div class="edu-stat-val">2019–23</div>
-          <div class="edu-stat-label">Years</div>
+
+        <div class="edu-stats fade-up">
+          <div>
+            <div class="edu-stat-val">4.0</div>
+            <div class="edu-stat-label">GPA</div>
+          </div>
+          <div>
+            <div class="edu-stat-val">2019–23</div>
+            <div class="edu-stat-label">Years</div>
+          </div>
+        </div>
+
+        <div class="fade-up">
+          <div class="tl-company">
+            The University of Texas at Austin &nbsp;·&nbsp; Austin, TX
+          </div>
+          <div class="tl-role">BBA, Management Information Systems</div>
+          <div class="edu-meta">
+            <span class="edu-badge filled">Minor in Accounting</span>
+            <span class="edu-badge">Certificate: Elements of Computing</span>
+          </div>
+        </div>
+
+        <div class="fade-up">
+          <div class="honors-label">Honors &amp; Awards</div>
+          <ul class="honors-list">
+            <li>
+              McCombs School of Business Distinguished College Scholar (Top 4%)
+            </li>
+            <li>Darrell K. Royal Presidential Scholarship</li>
+            <li>
+              Web Development System Project Scholarship — Best Overall Custom
+              Airbnb Project
+            </li>
+          </ul>
         </div>
       </div>
+    </section>
 
-      <div class="fade-up">
-        <div class="tl-company">The University of Texas at Austin &nbsp;·&nbsp; Austin, TX</div>
-        <div class="tl-role">BBA, Management Information Systems</div>
-        <div class="edu-meta">
-          <span class="edu-badge filled">Minor in Accounting</span>
-          <span class="edu-badge">Certificate: Elements of Computing</span>
-        </div>
-      </div>
-
-      <div class="fade-up">
-        <div class="honors-label">Honors &amp; Awards</div>
-        <ul class="honors-list">
-          <li>McCombs School of Business Distinguished College Scholar (Top 4%)</li>
-          <li>Darrell K. Royal Presidential Scholarship</li>
-          <li>Web Development System Project Scholarship — Best Overall Custom Airbnb Project</li>
-        </ul>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════
+    <!-- ══════════════════════════════════════
        04 — AWARDS & CERTIFICATIONS
   ══════════════════════════════════════ -->
-  <section class="sec" id="awards">
-    <div class="container">
-      <div class="sec-header fade-up">
-        <div class="sec-deco">✦ &nbsp; 04</div>
-        <div class="sec-title">Awards &amp; Certs</div>
-        <div class="sec-rule"></div>
-      </div>
-      <div class="awards-grid">
-        <div class="award-card fade-up">
-          <div class="award-icon">🏆</div>
-          <div class="award-title">Overall Best Development</div>
-          <div class="award-org">Annual Alfa Company Hackathon</div>
-          <div class="award-date">April 2025</div>
-          <div class="popup-content" hidden>
-            <div class="modal-icon">🏆</div>
-            <div class="modal-title">Overall Best Development</div>
-            <div class="modal-org">Annual Alfa Company Hackathon &nbsp;·&nbsp; April 2025</div>
-            <div class="modal-body">
-              <p>Collaborated with a team to develop a multithreaded Java-based backend bulk data generation tool. Built a frontend UI and exposed the tool in-app, allowing users to configure data generator parameters — ranges, numbers requested, and variating details — prior to running the bulk data generation.</p>
-              <p>Pushed the data generator into production and was responsible for the first client sale and implementation of the tool.</p>
+    <section class="sec" id="awards">
+      <div class="container">
+        <div class="sec-header fade-up">
+          <div class="sec-deco">✦ &nbsp; 04</div>
+          <div class="sec-title">Awards &amp; Certs</div>
+          <div class="sec-rule"></div>
+        </div>
+        <div class="awards-grid">
+          <div class="award-card fade-up">
+            <div class="award-icon">🏆</div>
+            <div class="award-title">Overall Best Development</div>
+            <div class="award-org">Annual Alfa Company Hackathon</div>
+            <div class="award-date">April 2025</div>
+            <div class="popup-content" hidden>
+              <div class="modal-icon">🏆</div>
+              <div class="modal-title">Overall Best Development</div>
+              <div class="modal-org">
+                Annual Alfa Company Hackathon &nbsp;·&nbsp; April 2025
+              </div>
+              <div class="modal-body">
+                <p>
+                  Collaborated with a team to develop a multithreaded Java-based
+                  backend bulk data generation tool. Built a frontend UI and
+                  exposed the tool in-app, allowing users to configure data
+                  generator parameters — ranges, numbers requested, and
+                  variating details — prior to running the bulk data generation.
+                </p>
+                <p>
+                  Pushed the data generator into production and was responsible
+                  for the first client sale and implementation of the tool.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="award-card fade-up">
+            <div class="award-icon">☁️</div>
+            <div class="award-title">AWS Certified Cloud Practitioner</div>
+            <div class="award-org">Amazon Web Services</div>
+            <div class="award-date">
+              Issued April 2026 &nbsp;·&nbsp; Expires April 2029
+            </div>
+            <div class="popup-content" hidden>
+              <div class="modal-icon">☁️</div>
+              <div class="modal-title">AWS Certified Cloud Practitioner</div>
+              <div class="modal-org">
+                Amazon Web Services &nbsp;·&nbsp; CLF-C02
+              </div>
+              <div class="modal-body">
+                <p>
+                  <strong>Exam:</strong> CLF-C02 &nbsp;·&nbsp; 65 questions
+                  &nbsp;·&nbsp; 90 minutes &nbsp;·&nbsp; Issued April 2026
+                  &nbsp;·&nbsp; Expires April 2029
+                </p>
+                <p>
+                  <strong>Covers:</strong> AWS core services (EC2, S3, RDS,
+                  Lambda), cloud architecture &amp; best practices, security
+                  &amp; compliance, identity &amp; access management, pricing
+                  &amp; billing models.
+                </p>
+                <a
+                  class="modal-link"
+                  href="https://www.credly.com/badges/19fffec8-ee98-4292-98ab-32f83d108c18/linked_in_profile"
+                  target="_blank"
+                  rel="noopener"
+                  >↗ &nbsp;View Credential on Credly</a
+                >
+              </div>
             </div>
           </div>
         </div>
-        <div class="award-card fade-up">
-          <div class="award-icon">☁️</div>
-          <div class="award-title">AWS Certified Cloud Practitioner</div>
-          <div class="award-org">Amazon Web Services</div>
-          <div class="award-date">Issued April 2026 &nbsp;·&nbsp; Expires April 2029</div>
-          <div class="popup-content" hidden>
-            <div class="modal-icon">☁️</div>
-            <div class="modal-title">AWS Certified Cloud Practitioner</div>
-            <div class="modal-org">Amazon Web Services &nbsp;·&nbsp; CLF-C02</div>
-            <div class="modal-body">
-              <p><strong>Exam:</strong> CLF-C02 &nbsp;·&nbsp; 65 questions &nbsp;·&nbsp; 90 minutes &nbsp;·&nbsp; Issued April 2026 &nbsp;·&nbsp; Expires April 2029</p>
-              <p><strong>Covers:</strong> AWS core services (EC2, S3, RDS, Lambda), cloud architecture &amp; best practices, security &amp; compliance, identity &amp; access management, pricing &amp; billing models.</p>
-              <a class="modal-link" href="https://www.credly.com/badges/19fffec8-ee98-4292-98ab-32f83d108c18/linked_in_profile" target="_blank" rel="noopener">↗ &nbsp;View Credential on Credly</a>
-            </div>
-          </div>
-        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ══════════════════════════════════════
+    <!-- ══════════════════════════════════════
        05 — TECHNICAL SKILLS
   ══════════════════════════════════════ -->
-  <section class="sec" id="skills">
-    <div class="container">
-      <div class="sec-header fade-up">
-        <div class="sec-deco">✦ &nbsp; 05</div>
-        <div class="sec-title">Skills</div>
-        <div class="sec-rule"></div>
+    <section class="sec" id="skills">
+      <div class="container">
+        <div class="sec-header fade-up">
+          <div class="sec-deco">✦ &nbsp; 05</div>
+          <div class="sec-title">Skills</div>
+          <div class="sec-rule"></div>
+        </div>
+        <div class="skills-groups">
+          <div class="fade-up">
+            <div class="skill-cat">Languages &amp; Frameworks</div>
+            <div class="pills">
+              <span class="pill core">Java</span>
+              <span class="pill core">JavaScript</span>
+              <span class="pill core">SQL</span>
+              <span class="pill">React</span>
+              <span class="pill">HTML / CSS</span>
+              <span class="pill">JUnit</span>
+              <span class="pill">Guice</span>
+              <span class="pill">Maven</span>
+            </div>
+          </div>
+
+          <div class="fade-up">
+            <div class="skill-cat">Cloud &amp; Infrastructure</div>
+            <div class="pills">
+              <span class="pill core">AWS</span>
+              <span class="pill core">Kubernetes</span>
+              <span class="pill core">Docker</span>
+              <span class="pill">EC2</span>
+              <span class="pill">ECR</span>
+              <span class="pill">S3</span>
+              <span class="pill">CloudWatch</span>
+              <span class="pill">CloudFormation</span>
+            </div>
+          </div>
+
+          <div class="fade-up">
+            <div class="skill-cat">DevOps &amp; CI/CD</div>
+            <div class="pills">
+              <span class="pill core">Jenkins</span>
+              <span class="pill core">CI/CD Pipelines</span>
+              <span class="pill">Bitbucket</span>
+            </div>
+          </div>
+
+          <div class="fade-up">
+            <div class="skill-cat">Testing &amp; APIs</div>
+            <div class="pills">
+              <span class="pill">Postman</span>
+              <span class="pill">Insomnia</span>
+              <span class="pill">WireMock</span>
+              <span class="pill">Integration Testing</span>
+              <span class="pill">End-to-End Testing</span>
+            </div>
+          </div>
+
+          <div class="fade-up">
+            <div class="skill-cat">Tools &amp; Collaboration</div>
+            <div class="pills">
+              <span class="pill">Git</span>
+              <span class="pill">Jira</span>
+              <span class="pill">Confluence</span>
+              <span class="pill">IntelliJ</span>
+              <span class="pill">VS Code</span>
+              <span class="pill">Bash</span>
+              <span class="pill">DBeaver</span>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="skills-groups">
+    </section>
 
-        <div class="fade-up">
-          <div class="skill-cat">Languages &amp; Frameworks</div>
-          <div class="pills">
-            <span class="pill core">Java</span>
-            <span class="pill core">JavaScript</span>
-            <span class="pill core">SQL</span>
-            <span class="pill">React</span>
-            <span class="pill">HTML / CSS</span>
-            <span class="pill">JUnit</span>
-            <span class="pill">Guice</span>
-            <span class="pill">Maven</span>
-          </div>
-        </div>
-
-        <div class="fade-up">
-          <div class="skill-cat">Cloud &amp; Infrastructure</div>
-          <div class="pills">
-            <span class="pill core">AWS</span>
-            <span class="pill core">Kubernetes</span>
-            <span class="pill core">Docker</span>
-            <span class="pill">EC2</span>
-            <span class="pill">ECR</span>
-            <span class="pill">S3</span>
-            <span class="pill">CloudWatch</span>
-            <span class="pill">CloudFormation</span>
-          </div>
-        </div>
-
-        <div class="fade-up">
-          <div class="skill-cat">DevOps &amp; CI/CD</div>
-          <div class="pills">
-            <span class="pill core">Jenkins</span>
-            <span class="pill core">CI/CD Pipelines</span>
-            <span class="pill">Bitbucket</span>
-          </div>
-        </div>
-
-        <div class="fade-up">
-          <div class="skill-cat">Testing &amp; APIs</div>
-          <div class="pills">
-            <span class="pill">Postman</span>
-            <span class="pill">Insomnia</span>
-            <span class="pill">WireMock</span>
-            <span class="pill">Integration Testing</span>
-            <span class="pill">End-to-End Testing</span>
-          </div>
-        </div>
-
-        <div class="fade-up">
-          <div class="skill-cat">Tools &amp; Collaboration</div>
-          <div class="pills">
-            <span class="pill">Git</span>
-            <span class="pill">Jira</span>
-            <span class="pill">Confluence</span>
-            <span class="pill">IntelliJ</span>
-            <span class="pill">VS Code</span>
-            <span class="pill">Bash</span>
-            <span class="pill">DBeaver</span>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════
+    <!-- ══════════════════════════════════════
        FOOTER
   ══════════════════════════════════════ -->
-  <footer>
-    <span>Brynne Jackson &nbsp;·&nbsp; Denver, CO &nbsp;·&nbsp;
-      <a href="mailto:brynnejackson99@gmail.com">brynnejackson99@gmail.com</a>
-      &nbsp;·&nbsp;
-      <a href="https://www.linkedin.com/in/brynne-jackson" target="_blank" rel="noopener">LinkedIn</a>
-    </span>
-  </footer>
+    <footer>
+      <span
+        >Brynne Jackson &nbsp;·&nbsp; Denver, CO &nbsp;·&nbsp;
+        <a href="mailto:brynnejackson99@gmail.com">brynnejackson99@gmail.com</a>
+        &nbsp;·&nbsp;
+        <a
+          href="https://www.linkedin.com/in/brynne-jackson"
+          target="_blank"
+          rel="noopener"
+          >LinkedIn</a
+        >
+      </span>
+    </footer>
 
-  <!-- ══════════════════════════════════════
+    <!-- ══════════════════════════════════════
        AWARD MODAL
   ══════════════════════════════════════ -->
-  <div id="award-modal" class="modal-overlay" aria-modal="true" role="dialog" hidden>
-    <div class="modal-box">
-      <button class="modal-close" aria-label="Close">&#x2715;&nbsp; Close</button>
-      <div class="modal-inner"></div>
+    <div
+      id="award-modal"
+      class="modal-overlay"
+      aria-modal="true"
+      role="dialog"
+      hidden
+    >
+      <div class="modal-box">
+        <button class="modal-close" aria-label="Close">
+          &#x2715;&nbsp; Close
+        </button>
+        <div class="modal-inner"></div>
+      </div>
     </div>
-  </div>
 
-  <!-- ══════════════════════════════════════
+    <!-- ══════════════════════════════════════
        JAVASCRIPT
   ══════════════════════════════════════ -->
-  <script>
-    /* ── 1. TYPEWRITER ANIMATION ── */
-    (function () {
-      const lineB   = document.getElementById('line-brynne');
-      const lineJ   = document.getElementById('line-jackson');
-      const cursor  = document.getElementById('cursor');
-      const speed   = 80;   // ms per letter
-      const pause   = 420;  // ms between lines
+    <script>
+      /* ── 1. TYPEWRITER ANIMATION ── */
+      (function () {
+        const lineB = document.getElementById("line-brynne");
+        const lineJ = document.getElementById("line-jackson");
+        const cursor = document.getElementById("cursor");
+        const speed = 80; // ms per letter
+        const pause = 420; // ms between lines
 
-      function typeWord(el, word, callback) {
-        let i = 0;
-        function tick() {
-          el.textContent = word.slice(0, ++i);
-          if (i < word.length) setTimeout(tick, speed);
-          else if (callback) setTimeout(callback, pause);
+        function typeWord(el, word, callback) {
+          let i = 0;
+          function tick() {
+            el.textContent = word.slice(0, ++i);
+            if (i < word.length) setTimeout(tick, speed);
+            else if (callback) setTimeout(callback, pause);
+          }
+          setTimeout(tick, speed);
         }
-        setTimeout(tick, speed);
-      }
 
-      document.addEventListener('DOMContentLoaded', function () {
-        // Move cursor to end of line 1 while typing Brynne
-        lineB.appendChild(cursor);
-        typeWord(lineB, 'Brynne', function () {
-          // Move cursor to line 2, type Jackson
-          lineJ.insertBefore(cursor, lineJ.firstChild);
-          typeWord(lineJ, 'Jackson', function () {
-            // Cursor stays blinking after Jackson — append to end
-            lineJ.appendChild(cursor);
+        document.addEventListener("DOMContentLoaded", function () {
+          // Move cursor to end of line 1 while typing Brynne
+          lineB.appendChild(cursor);
+          typeWord(lineB, "Brynne", function () {
+            // Move cursor to line 2, type Jackson
+            lineJ.insertBefore(cursor, lineJ.firstChild);
+            typeWord(lineJ, "Jackson", function () {
+              // Cursor stays blinking after Jackson — append to end
+              lineJ.appendChild(cursor);
+            });
           });
         });
-      });
-    })();
+      })();
 
-    /* ── 2. SCROLL FADE-UP (IntersectionObserver) ── */
-    (function () {
-      const observer = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target); // fire once only
-          }
+      /* ── 2. SCROLL FADE-UP (IntersectionObserver) ── */
+      (function () {
+        const observer = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+                observer.unobserve(entry.target); // fire once only
+              }
+            });
+          },
+          { threshold: 0.12 }
+        );
+
+        document.querySelectorAll(".fade-up").forEach(function (el) {
+          observer.observe(el);
         });
-      }, { threshold: 0.12 });
+      })();
 
-      document.querySelectorAll('.fade-up').forEach(function (el) {
-        observer.observe(el);
-      });
-    })();
+      /* ── 3. AWARD CARD MODALS ── */
+      (function () {
+        var overlay = document.getElementById("award-modal");
+        var inner = overlay.querySelector(".modal-inner");
+        var closeBtn = overlay.querySelector(".modal-close");
 
-    /* ── 3. AWARD CARD MODALS ── */
-    (function () {
-      var overlay  = document.getElementById('award-modal');
-      var inner    = overlay.querySelector('.modal-inner');
-      var closeBtn = overlay.querySelector('.modal-close');
+        function openModal(card) {
+          var content = card.querySelector(".popup-content");
+          inner.innerHTML = content.innerHTML;
+          overlay.removeAttribute("hidden");
+          document.body.style.overflow = "hidden";
+        }
 
-      function openModal(card) {
-        var content = card.querySelector('.popup-content');
-        inner.innerHTML = content.innerHTML;
-        overlay.removeAttribute('hidden');
-        document.body.style.overflow = 'hidden';
-      }
+        function closeModal() {
+          overlay.setAttribute("hidden", "");
+          document.body.style.overflow = "";
+        }
 
-      function closeModal() {
-        overlay.setAttribute('hidden', '');
-        document.body.style.overflow = '';
-      }
+        document.querySelectorAll(".award-card").forEach(function (card) {
+          card.addEventListener("click", function () {
+            openModal(card);
+          });
+        });
 
-      document.querySelectorAll('.award-card').forEach(function (card) {
-        card.addEventListener('click', function () { openModal(card); });
-      });
+        closeBtn.addEventListener("click", closeModal);
 
-      closeBtn.addEventListener('click', closeModal);
+        overlay.addEventListener("click", function (e) {
+          if (e.target === overlay) closeModal();
+        });
 
-      overlay.addEventListener('click', function (e) {
-        if (e.target === overlay) closeModal();
-      });
-
-      document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape') closeModal();
-      });
-    })();
-  </script>
-
-</body>
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape") closeModal();
+        });
+      })();
+    </script>
+  </body>
 </html>
