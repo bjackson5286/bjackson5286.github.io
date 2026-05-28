@@ -15,7 +15,6 @@ Push to `main`. GitHub Pages serves the site automatically from the repo root at
 | `index.html` | Single-file app: all CSS (inline `<style>`), all JS (inline `<script>`), and every section of the resume |
 | `interests.html` | Standalone Interests page — duplicates the nav and shares the same CSS variables/design system inline |
 | `resume.pdf` | Linked by the "Download Resume" button (`<a href="resume.pdf" download>`) |
-| `assets/bevo-tower.jpg` | **Required but not yet added.** Education section background image — place a Bevo + UT Tower photo here. The CSS filter `sepia(0.9) hue-rotate(295deg) saturate(0.45) brightness(1.3)` tints it to rose gold automatically. |
 
 ## Design system
 
@@ -45,4 +44,3 @@ Fluid sizing uses `clamp()` throughout — avoid hardcoded `px` values for font 
 - **Odd/even section backgrounds** — `.sec:nth-of-type(odd)` gets `--cream`, even gets white. Order matters; don't insert sections without checking the alternation.
 - **Nav** — `position: sticky; top: 0` with glassmorphism (`backdrop-filter: blur(14px)`). On `interests.html`, nav links that anchor into `index.html` use the form `index.html#about`.
 - **Pills** — `.pill` is outlined, `.pill.core` is filled rose gold. Core skills: Java, JavaScript, SQL, AWS, Kubernetes, Docker, Jenkins, CI/CD Pipelines.
-- **Education background** — the `.edu-photo-bg` pseudo-layer sits `position: absolute; inset: 0` with `z-index: 0`; all content is `position: relative; z-index: 1`.
