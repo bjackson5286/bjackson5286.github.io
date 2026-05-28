@@ -1109,6 +1109,39 @@
         observer.observe(el);
       });
     })();
+
+    /* ── 3. AWARD CARD MODALS ── */
+    (function () {
+      var overlay  = document.getElementById('award-modal');
+      var inner    = overlay.querySelector('.modal-inner');
+      var closeBtn = overlay.querySelector('.modal-close');
+
+      function openModal(card) {
+        var content = card.querySelector('.popup-content');
+        inner.innerHTML = content.innerHTML;
+        overlay.removeAttribute('hidden');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeModal() {
+        overlay.setAttribute('hidden', '');
+        document.body.style.overflow = '';
+      }
+
+      document.querySelectorAll('.award-card').forEach(function (card) {
+        card.addEventListener('click', function () { openModal(card); });
+      });
+
+      closeBtn.addEventListener('click', closeModal);
+
+      overlay.addEventListener('click', function (e) {
+        if (e.target === overlay) closeModal();
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeModal();
+      });
+    })();
   </script>
 
 </body>
