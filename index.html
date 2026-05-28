@@ -614,6 +614,106 @@
     }
 
     /* ══════════════════════════════════════
+       AWARD MODAL
+    ══════════════════════════════════════ */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(92, 58, 48, 0.45);
+      backdrop-filter: blur(3px);
+      -webkit-backdrop-filter: blur(3px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+    }
+
+    .modal-overlay[hidden] { display: none; }
+
+    .modal-box {
+      background: var(--white);
+      border-radius: 16px;
+      box-shadow: 0 12px 56px rgba(92, 58, 48, 0.28);
+      padding: 32px 34px 28px;
+      max-width: 440px;
+      width: 90%;
+      border-top: 3px solid var(--rose);
+      position: relative;
+      animation: modalFadeUp 0.22s ease;
+    }
+
+    @keyframes modalFadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 14px;
+      right: 16px;
+      font-family: sans-serif;
+      font-size: 10px;
+      color: var(--muted);
+      cursor: pointer;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      border: 1px solid var(--blush);
+      padding: 4px 11px;
+      border-radius: 20px;
+      background: transparent;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+
+    .modal-close:hover {
+      background: var(--rose);
+      color: var(--white);
+      border-color: var(--rose);
+    }
+
+    .modal-icon { font-size: 26px; margin-bottom: 8px; }
+
+    .modal-title {
+      font-size: clamp(14px, 1.8vw, 17px);
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 3px;
+      line-height: 1.3;
+    }
+
+    .modal-org {
+      font-family: sans-serif;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--rose);
+      margin-bottom: 14px;
+    }
+
+    .modal-body {
+      font-size: clamp(12px, 1.4vw, 14px);
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .modal-body p + p { margin-top: 10px; }
+
+    .modal-link {
+      display: inline-block;
+      margin-top: 14px;
+      font-family: sans-serif;
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--rose);
+      text-decoration: none;
+      border-bottom: 1px solid var(--blush);
+      padding-bottom: 2px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .modal-link:hover { color: var(--text); border-color: var(--text); }
+
+    /* ══════════════════════════════════════
        FOOTER
     ══════════════════════════════════════ */
     footer {
