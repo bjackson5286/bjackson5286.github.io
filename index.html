@@ -378,6 +378,29 @@
 
           max-width: 64vw; /* keeps it away from center */
         }
+        .award-card {
+    position: relative;
+    padding-right: 44px;
+  }
+
+  .award-card::after {
+    content: "›";
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+
+    font-size: 40px;   /* bigger arrow */
+    color: var(--rose);
+    opacity: 0.8;
+
+    animation: arrowBlink 1.2s infinite;
+  }
+
+  @keyframes arrowBlink {
+    0%, 100% { opacity: 0.2; transform: translateY(-50%) translateX(0); }
+    50%      { opacity: 0.9; transform: translateY(-50%) translateX(2px); }
+  }
       }
 
       .about-bio p {
