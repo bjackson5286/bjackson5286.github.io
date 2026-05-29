@@ -343,6 +343,41 @@
         .about-grid {
           grid-template-columns: 1fr;
         }
+        /* Photo wrapper */
+        .hero-photo {
+          position: absolute;
+          right: 5vh;
+          bottom: 0;
+          height: 95vh; /* slightly smaller than screen height */
+          max-height: 100%;
+          width: clamp(240px, 32vw, 420px);
+
+          z-index: 2;
+          pointer-events: none;
+        }
+
+        /* Image */
+        .hero-photo img {
+          height: 100%;
+          width: auto;
+          display: block;
+          object-fit: contain;
+          filter: drop-shadow(-6px 0 20px rgba(92, 58, 48, 0.12))
+            drop-shadow(4px 16px 32px rgba(92, 58, 48, 0.25));
+        }
+
+        .hero {
+          min-height: 105vh;
+        }
+        .hero-btn {
+          padding: 8px 8px;
+        }
+        .hero-tagline {
+          left: var(--gutter);
+          right: auto;
+
+          max-width: 64vw; /* keeps it away from center */
+        }
       }
 
       .about-bio p {
@@ -865,12 +900,12 @@
           Turning legacy systems into scalable futures — and making it look
           effortless.
         </div>
-              <!-- Download button — appears on scroll (~75% down hero) -->
-      <div class="hero-download">
-        <a class="hero-btn" href="resume.pdf" download
-          >↓ &nbsp;Download Resume</a
-        >
-      </div>
+        <!-- Download button — appears on scroll (~75% down hero) -->
+        <div class="hero-download">
+          <a class="hero-btn" href="resume.pdf" download
+            >↓ &nbsp;Download Resume</a
+          >
+        </div>
       </div>
 
       <!-- Photo sticker — bottom-right corner -->
